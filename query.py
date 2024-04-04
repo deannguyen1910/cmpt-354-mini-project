@@ -16,6 +16,10 @@ with conn:
     task4= "SELECT c.Area, AVG(ABS(p.RequestedAmount - p.AwardedAmount)) as AverageDiscrepancy FROM Proposals p JOIN Competitions c ON p.CompetitionID = c.CompetitionID WHERE c.Area = USER_SPECIFIED_AREA GROUP BY c.Area;"
     task5= "SELECT r.ReviewerID FROM Reviewers r LEFT JOIN Assignments a ON r.ReviewerID = a.ReviewerID AND a.ProposalID = USER_SPECIFIED_PROPOSAL_ID LEFT JOIN ConflictOfInterest coi ON r.ReviewerID = coi.ReviewerID AND coi.ConflictedResearcherID = (SELECT PrincipalInvestigator FROM Proposals WHERE ProposalID = USER_SPECIFIED_PROPOSAL_ID) WHERE coi.ReviewerID IS NULL GROUP BY r.ReviewerID HAVING COUNT(a.AssignmentID) < 3;"
     task6= "SELECT p.ProposalID FROM Proposals p JOIN Assignments a ON p.ProposalID = a.ProposalID JOIN Reviewers r ON a.ReviewerID = r.ReviewerID JOIN Researchers res ON r.ResearcherID = res.ResearcherID WHERE CONCAT(res.FirstName, ' ', res.LastName) = USER_SPECIFIED_NAME AND a.ReviewSubmitted = FALSE;"
+    
+    
+    ## create the 
+    
     # cur.execute(myQuery,{"myArtist":myFavArtist})
 
     rows=cur.fetchall()
