@@ -1,5 +1,9 @@
 # cmpt-354-mini-project
 
-To run:
+Run 
+``` 
+python3 query.py
+```
+to launch
 
-python query.py
+The table is describe in md.pdf and sqlite.ipynb 
